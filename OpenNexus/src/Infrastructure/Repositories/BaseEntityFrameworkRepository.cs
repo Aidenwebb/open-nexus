@@ -7,6 +7,7 @@ public abstract class BaseEntityFrameworkRepository
 {
     public BaseEntityFrameworkRepository(IServiceScopeFactory serviceScopeFactory)
     {
+        _serviceScopeFactory = serviceScopeFactory;
     }
 
     protected IServiceScopeFactory _serviceScopeFactory { get; private set; }
