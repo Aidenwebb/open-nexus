@@ -24,12 +24,12 @@ public class CompaniesController : ControllerBase
 
 
     [HttpGet("")]
-    public async Task<List<CompanyResponseModel>> GetCompanies()
+    public async Task<IActionResult> GetCompanies()
     {
         var companies = await _companyRepository.GetManyAsync();
 
-        List<CompanyResponseModel> responses = _mapper.Map<List<CompanyResponseModel>>(companies);
+        IEnumerable<CompanyResponseModel> responses = _mapper.Map<IEnumerable<CompanyResponseModel>>(companies);
 
-        return responses;
+        return Ok(new ListResponseModel<CompanyResponseModel>(responses));
     }
 }
