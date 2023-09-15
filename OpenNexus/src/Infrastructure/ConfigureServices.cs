@@ -1,4 +1,6 @@
+using Arnkels.OpenNexus.Domain.Repositories;
 using Arnkels.OpenNexus.Infrastructure.Data;
+using Arnkels.OpenNexus.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,9 @@ public static class ConfigureServices
             options.UseNpgsql(connectionString,
                 builder => builder.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName));
         });
+
+        services.AddScoped<ICompanyStatusRepository, CompanyStatusRepository>();
+        services.AddScoped<ICompanyRepository, CompanyRepository>();
 
         return services;
     }
