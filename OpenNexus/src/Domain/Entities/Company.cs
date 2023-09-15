@@ -12,15 +12,9 @@ public class Company : BaseEntity
     public string Name { get; set; }
 
     /// <summary>
-    /// Unique identifier for the companies types. Maps to the CompanyType Entity
-    /// </summary>
-    [Required]
-    public IList<Guid> CompanyTypeIds { get; set; }
-
-    /// <summary>
     /// Navigation Property for the companies types
     /// </summary>
-    public virtual IList<CompanyType> Types { get; set; }
+    public virtual List<CompanyType>? Types { get; } = new();
 
     /// <summary>
     /// Unique identifier for the companies status. Maps to the CompanyStatus Entity

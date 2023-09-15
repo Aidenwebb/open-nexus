@@ -71,12 +71,6 @@ public class DatabaseContext : DbContext
         {
             Id = Guid.Parse("43acb1cd-bae8-4503-aa4a-c21e97459c02"),
             CompanyStatusId = Guid.Parse("68449c3e-1139-44f7-ab90-f5e7ef3a1963"),
-            CompanyTypeIds = new List<Guid>
-            {
-                Guid.Parse("51875687-c7be-4dfb-96ea-0899b48922da"),
-                Guid.Parse("fa6901f6-3a8e-4c23-86a8-1709473ea441"),
-                Guid.Parse("a2197c40-f01a-49d8-bd1b-3e5954617ff2"),
-            },
             Name = "Acme",
             AccountNumber = "ACME001",
             NumberOfEmployees = 100
@@ -86,10 +80,6 @@ public class DatabaseContext : DbContext
         {
             Id = Guid.Parse("d5c2a80f-6bd4-49a8-80e4-d9230d1112ec"),
             CompanyStatusId = Guid.Parse("e558b52c-4a4d-439f-9773-12288307a367"),
-            CompanyTypeIds = new List<Guid>
-            {
-                Guid.Parse("a2197c40-f01a-49d8-bd1b-3e5954617ff2"),
-            },
             Name = "Contoso",
             AccountNumber = "CONT001",
             NumberOfEmployees = 50,
@@ -99,10 +89,6 @@ public class DatabaseContext : DbContext
         {
             Id = Guid.Parse("6b5e768a-7fc8-40ea-a087-84553c85f021"),
             CompanyStatusId = Guid.Parse("e1c19b6a-5e68-4d0e-b4d7-2d3c7645124a"),
-            CompanyTypeIds = new List<Guid>
-            {
-                Guid.Parse("fa6901f6-3a8e-4c23-86a8-1709473ea441"),
-            },
             Name = "Greg Addams",
             AccountNumber = "GREG001",
             NumberOfEmployees = 1
