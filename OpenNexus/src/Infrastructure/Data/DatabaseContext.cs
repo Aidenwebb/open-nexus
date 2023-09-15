@@ -10,7 +10,7 @@ public class DatabaseContext : DbContext
     }
 
     public DbSet<Company> Companies { get; set; }
-    public DbSet<CompanyStatus> CompanyStatus { get; set; }
+    public DbSet<CompanyStatus> CompanyStatuses { get; set; }
     public DbSet<CompanyType> CompanyTypes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
