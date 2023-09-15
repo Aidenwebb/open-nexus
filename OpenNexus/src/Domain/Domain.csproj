@@ -9,7 +9,9 @@
 
 
     <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageReference Include="RT.Comb" Version="4.0.1"/>
     </ItemGroup>
+
 
 </Project>
