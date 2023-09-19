@@ -19,9 +19,23 @@ public class CompanyRepository : Repository<Company, Guid>, ICompanyRepository
         {
             var dbContext = GetDatabaseContext(scope);
             var query = dbContext.Companies
-                .Include(company => company.Status);
+                .Include(company => company.Status)
+                .Include(company => company.ParentCompany);
             var companies = await query.ToListAsync();
             return companies;
+        }
+    }
+
+    public async override Task<Company> GetByIdAsync(Guid id)
+    {
+        using (var scope = _serviceScopeFactory.CreateScope())
+        {
+            var dbContext = GetDatabaseContext(scope);
+            var company = await dbContext.Companies
+                .Include(company => company.Status)
+                .Include(company => company.ParentCompany)
+                .FirstOrDefaultAsync(company => company.Id == id);
+            return company;
         }
     }
 }
