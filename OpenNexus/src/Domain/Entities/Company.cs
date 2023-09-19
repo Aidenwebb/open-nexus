@@ -5,6 +5,13 @@ namespace Arnkels.OpenNexus.Domain.Entities;
 public class Company : BaseEntity
 {
     /// <summary>
+    /// A Human Readable Identifier
+    /// </summary>
+    [MaxLength(50)]
+    [Required]
+    public string Identifier { get; set; }
+
+    /// <summary>
     /// The Company's Name
     /// </summary>
     [MaxLength(100)]
@@ -27,12 +34,23 @@ public class Company : BaseEntity
     /// </summary>
     public virtual CompanyStatus Status { get; set; }
 
+    /// <summary>
+    /// UUID for Companies parent company
+    /// </summary>
+    public Guid? ParentCompanyId { get; set; }
+
+    /// <summary>
+    /// Navigation Property for companies parent company
+    /// </summary>
+    public virtual Company? ParentCompany { get; set; }
+
     public string? AddressLine1 { get; set; }
     public string? AddressLine2 { get; set; }
     public string? AddressLine3 { get; set; }
     public string? City { get; set; }
+    public string? State { get; set; }
     public string? Country { get; set; }
-    public string? PostCode { get; set; }
+    public string? Zip { get; set; }
     public string? PhoneNumber { get; set; }
     public string? FaxNumber { get; set; }
     public string? MobileNumber { get; set; }
