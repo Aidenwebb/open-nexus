@@ -17,10 +17,11 @@ public class DatabaseContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+
         // CompanyStatuses
         modelBuilder.Entity<CompanyStatus>().HasData(new CompanyStatus
         {
-            Id = Guid.Parse("68449c3e-1139-44f7-ab90-f5e7ef3a1963"),
+            Id = Guid.Parse("018ab325-8686-4373-b458-031ac61139ed"),
             Description = "Company is a Lead",
             InactiveFlag = false,
             Name = "Lead"
@@ -28,7 +29,7 @@ public class DatabaseContext : DbContext
 
         modelBuilder.Entity<CompanyStatus>().HasData(new CompanyStatus
         {
-            Id = Guid.Parse("e1c19b6a-5e68-4d0e-b4d7-2d3c7645124a"),
+            Id = Guid.Parse("018ab325-db68-441d-be32-84435167f043"),
             Description = "Company is a Prospect",
             InactiveFlag = false,
             Name = "Prospect"
@@ -36,7 +37,7 @@ public class DatabaseContext : DbContext
 
         modelBuilder.Entity<CompanyStatus>().HasData(new CompanyStatus
         {
-            Id = Guid.Parse("e558b52c-4a4d-439f-9773-12288307a367"),
+            Id = Guid.Parse("018ab326-1aa9-40da-8da8-81f0ac2d6aa5"),
             Description = "Company is a Customer",
             InactiveFlag = false,
             Name = "Customer"
