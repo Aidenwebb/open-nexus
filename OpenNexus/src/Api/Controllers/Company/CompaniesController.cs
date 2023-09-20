@@ -1,31 +1,23 @@
-using System.Collections;
 using Arnkels.OpenNexus.Application.Companies.Models.Request;
 using Arnkels.OpenNexus.Application.Companies.Models.Response;
-using Arnkels.OpenNexus.Domain.Entities;
 using Arnkels.OpenNexus.Domain.Repositories;
 using Arnkels.OpenNexus.Domain.Services;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arnkels.OpenNexus.Api.Controllers.Company;
 
 [Route("/company/[controller]")]
 [ApiController]
-public class CompaniesController : ControllerBase
+public partial class CompaniesController : ControllerBase
 {
     private readonly ICompanyRepository _companyRepository;
     private readonly ICompanyService _companyService;
-    private readonly ICompanyStatusRepository _companyStatusRepository;
-    private readonly IMapper _mapper;
 
-    public CompaniesController(ICompanyStatusRepository companyStatusRepository, ICompanyRepository companyRepository,
-        ICompanyService companyService,
-        IMapper mapper)
+    public CompaniesController(ICompanyRepository companyRepository,
+        ICompanyService companyService)
     {
-        _companyStatusRepository = companyStatusRepository;
         _companyRepository = companyRepository;
         _companyService = companyService;
-        _mapper = mapper;
     }
 
 
