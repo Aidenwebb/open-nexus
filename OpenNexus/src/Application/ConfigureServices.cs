@@ -11,6 +11,7 @@ public static class ConfigureServices
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddScoped<ICompanyService, CompanyService>();
+        services.AddScoped<ICompanyStatusService, CompanyStatusService>();
 
         return services;
     }
