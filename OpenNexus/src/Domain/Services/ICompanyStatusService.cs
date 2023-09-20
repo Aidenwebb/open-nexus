@@ -2,6 +2,6 @@ using Arnkels.OpenNexus.Domain.Entities;
 
 namespace Arnkels.OpenNexus.Domain.Services;
 
-public interface ICompanyService : IService<Company, Guid>
+public interface ICompanyStatusService : IService<CompanyStatus, Guid>
 {
 }

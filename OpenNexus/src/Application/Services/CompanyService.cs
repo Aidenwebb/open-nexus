@@ -4,29 +4,12 @@ using Arnkels.OpenNexus.Domain.Services;
 
 namespace Arnkels.OpenNexus.Application.Services;
 
-public class CompanyService : ICompanyService
+public class CompanyService : Service<Company, Guid>, ICompanyService
 {
     private readonly ICompanyRepository _companyRepository;
 
-    public CompanyService(ICompanyRepository companyRepository)
+    public CompanyService(ICompanyRepository companyRepository) : base(companyRepository)
     {
         _companyRepository = companyRepository;
-    }
-
-    public async Task SaveAsync(Company company)
-    {
-        if (company.Id == default(Guid))
-        {
-            await _companyRepository.CreateAsync(company);
-        }
-        else
-        {
-            await _companyRepository.ReplaceAsync(company);
-        }
-    }
-
-    public async Task DeleteAsync(Company company)
-    {
-        await _companyRepository.DeleteAsync(company);
     }
 }
