@@ -1,5 +1,7 @@
 using Arnkels.OpenNexus.Application.Common.Models;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.CreateCompany;
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.DeleteCompany;
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.UpdateCompany;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompaniesWithPagination;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompanyById;
@@ -53,36 +55,29 @@ public class CompaniesController : ApiControllerBase
         return CreatedAtAction(nameof(GetCompanyById), new { id = responseId }, response);
     }
 
-    [ProducesResponseType(204)]
     [HttpDelete("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesDefaultResponseType]
     public async Task<IActionResult> DeleteCompanyAsync(Guid id)
     {
-        var company = await _companyRepository.GetByIdAsync(id);
-        if (company == null)
-        {
-            return NotFound();
-        }
-
-        await _companyService.DeleteAsync(company);
+        await Mediator.Send(new DeleteCompanyCommand(id));
 
         return NoContent();
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> ReplaceCompanyAsync(Guid id, [FromBody] CompanyRequestModel model)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesDefaultResponseType]
+    public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] UpdateCompanyCommand command)
     {
-        var existingCompany = await _companyRepository.GetByIdAsync(id);
-        if (existingCompany == null)
+        if (id != command.Id)
         {
-            return NotFound();
+            return BadRequest();
         }
 
-        var company = model.ToCompany();
-        company.Id = existingCompany.Id;
-        await _companyService.SaveAsync(company);
+        await Mediator.Send(command);
 
-        var response = new CompanyResponseModel(await _companyRepository.GetByIdAsync(id));
-
-        return Ok(response);
+        return NoContent();
     }
 }
