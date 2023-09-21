@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
 
-public class GetCompanyStatusesWithPaginationQuery : IRequest<PaginatedList<CompanyStatusDto>>
+public record GetCompanyStatusesWithPaginationQuery : IRequest<PaginatedList<CompanyStatusDto>>
 {
     public bool InactiveFlag { get; init; } = false;
     public int PageNumber { get; init; } = 1;
