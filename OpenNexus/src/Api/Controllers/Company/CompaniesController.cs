@@ -1,6 +1,9 @@
+using Arnkels.OpenNexus.Application.Common.Models;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.CreateCompany;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries;
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompaniesWithPagination;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompanyById;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 using Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
 using Arnkels.OpenNexus.Application.CompanyServices.Models.Response;
 using Arnkels.OpenNexus.Domain.Repositories;
@@ -22,15 +25,11 @@ public class CompaniesController : ApiControllerBase
         _companyService = companyService;
     }
 
-
     [HttpGet("")]
-    public async Task<IActionResult> GetCompaniesAsync()
+    public async Task<ActionResult<PaginatedList<CompanyDto>>> GetCompaniesWithPaginationAsync(
+        [FromQuery] GetCompaniesWithPaginationQuery query)
     {
-        ICollection<Domain.Entities.Company> companies = await _companyRepository.GetManyAsync();
-
-        var responses = companies.Select(company => new CompanyResponseModel(company));
-
-        return Ok(new ListResponseModel<CompanyResponseModel>(responses));
+        return await Mediator.Send(query);
     }
 
     [HttpGet("{id:guid}")]
