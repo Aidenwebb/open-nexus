@@ -24,9 +24,13 @@ public class CompanyStatusesController : ApiControllerBase
 
     // Get CompanyStatusById
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetCompanyStatusById(Guid id)
+    public async Task<ActionResult<CompanyStatusDto>> GetCompanyStatusById(Guid id)
     {
-        return Ok("test");
+        var query = new GetCompanyStatusByIdQuery
+        {
+            Id = id
+        };
+        return await Mediator.Send(query);
     }
 
     // Create CompanyStatus
