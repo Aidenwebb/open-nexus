@@ -1,7 +1,6 @@
 using Arnkels.OpenNexus.Application.Common.Interfaces;
 using Arnkels.OpenNexus.Domain.Repositories;
 using Arnkels.OpenNexus.Infrastructure.Data;
-using Arnkels.OpenNexus.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -23,8 +22,6 @@ public static class ConfigureServices
         });
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<DatabaseContext>());
-        services.AddScoped<ICompanyStatusRepository, CompanyStatusRepository>();
-        services.AddScoped<ICompanyRepository, CompanyRepository>();
 
         return services;
     }

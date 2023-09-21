@@ -5,11 +5,6 @@ using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.UpdateCom
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompaniesWithPagination;
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompanyById;
-using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
-using Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
-using Arnkels.OpenNexus.Application.CompanyServices.Models.Response;
-using Arnkels.OpenNexus.Domain.Repositories;
-using Arnkels.OpenNexus.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arnkels.OpenNexus.Api.Controllers.Company;
@@ -17,16 +12,6 @@ namespace Arnkels.OpenNexus.Api.Controllers.Company;
 [Route("/company/[controller]")]
 public class CompaniesController : ApiControllerBase
 {
-    private readonly ICompanyRepository _companyRepository;
-    private readonly ICompanyService _companyService;
-
-    public CompaniesController(ICompanyRepository companyRepository,
-        ICompanyService companyService)
-    {
-        _companyRepository = companyRepository;
-        _companyService = companyService;
-    }
-
     [HttpGet("")]
     public async Task<ActionResult<PaginatedList<CompanyDto>>> GetCompaniesWithPaginationAsync(
         [FromQuery] GetCompaniesWithPaginationQuery query)

@@ -3,8 +3,6 @@ using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.Cre
 using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.DeleteCompanyStatus;
 using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.UpdateCompanyStatus;
 using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
-using Arnkels.OpenNexus.Domain.Repositories;
-using Arnkels.OpenNexus.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arnkels.OpenNexus.Api.Controllers.Company;
