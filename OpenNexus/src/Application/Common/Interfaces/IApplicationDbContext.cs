@@ -9,5 +9,5 @@ public interface IApplicationDbContext
     DbSet<CompanyStatus> CompanyStatuses { get; }
     DbSet<CompanyType> CompanyTypes { get; }
 
-    Task<Guid> SaveChangesAsync(CancellationToken cancellationToken);
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

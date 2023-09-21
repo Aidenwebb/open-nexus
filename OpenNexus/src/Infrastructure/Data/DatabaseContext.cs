@@ -1,17 +1,27 @@
+using Arnkels.OpenNexus.Application.Common.Interfaces;
 using Arnkels.OpenNexus.Domain.Entities;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Arnkels.OpenNexus.Infrastructure.Data;
 
-public class DatabaseContext : DbContext
+public class DatabaseContext : DbContext, IApplicationDbContext
 {
-    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
+    private readonly IMediator _mediator;
+
+    public DatabaseContext(DbContextOptions<DatabaseContext> options, IMediator mediator) : base(options)
     {
+        _mediator = mediator;
     }
 
     public DbSet<Company> Companies { get; set; }
     public DbSet<CompanyStatus> CompanyStatuses { get; set; }
     public DbSet<CompanyType> CompanyTypes { get; set; }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return await base.SaveChangesAsync(cancellationToken);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
