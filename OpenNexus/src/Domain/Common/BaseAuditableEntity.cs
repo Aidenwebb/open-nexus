@@ -1,4 +1,4 @@
-namespace Arnkels.OpenNexus.Domain.Entities;
+namespace Arnkels.OpenNexus.Domain.Common;
 
 public class BaseAuditableEntity : BaseEntity
 {

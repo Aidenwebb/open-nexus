@@ -23,4 +23,14 @@ public class CompanyStatusRepository : Repository<CompanyStatus, Guid>, ICompany
             return companies;
         }
     }
+
+    // public override Task DeleteAsync(CompanyStatus obj)
+    // {
+    //     using (var scope = _serviceScopeFactory.CreateScope())
+    //     {
+    //         var dbContext = GetDatabaseContext(scope);
+    //         var query = dbContext.CompanyStatuses.Include()
+    //     }
+    //     var companyStatusDependencies = 
+    // }
 }

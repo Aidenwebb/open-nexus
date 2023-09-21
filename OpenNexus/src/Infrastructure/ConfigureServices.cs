@@ -2,6 +2,7 @@ using Arnkels.OpenNexus.Domain.Repositories;
 using Arnkels.OpenNexus.Infrastructure.Data;
 using Arnkels.OpenNexus.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,15 @@ public static class ConfigureServices
         {
             var connectionString = configuration.GetConnectionString("DefaultConnectionString");
             options.UseNpgsql(connectionString,
-                builder => builder.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName));
+                    builder => builder.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName))
+                // For Dev
+                // .ConfigureWarnings(b =>
+                // {
+                //     b.Throw(CoreEventId.NavigationLazyLoading);
+                //     b.Throw(CoreEventId.DetachedLazyLoadingWarning);
+                //     b.Throw(CoreEventId.LazyLoadOnDisposedContextWarning);
+                // })
+                ;
         });
 
         services.AddScoped<ICompanyStatusRepository, CompanyStatusRepository>();

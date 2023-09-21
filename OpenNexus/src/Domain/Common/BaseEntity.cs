@@ -1,4 +1,6 @@
-namespace Arnkels.OpenNexus.Domain.Entities;
+using Arnkels.OpenNexus.Domain.Entities;
+
+namespace Arnkels.OpenNexus.Domain.Common;
 
 public abstract class BaseEntity : ITableObject<Guid>
 {

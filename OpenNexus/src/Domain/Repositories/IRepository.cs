@@ -1,3 +1,4 @@
+using Arnkels.OpenNexus.Domain.Common;
 using Arnkels.OpenNexus.Domain.Entities;
 
 namespace Arnkels.OpenNexus.Domain.Repositories;

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Arnkels.OpenNexus.Domain.Common;
 
 namespace Arnkels.OpenNexus.Domain.Entities;
 
