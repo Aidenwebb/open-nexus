@@ -1,4 +1,5 @@
 using Arnkels.OpenNexus.Application.Common.Mappings;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyContacts.Queries;
 using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 using Arnkels.OpenNexus.Domain.Entities;
 
@@ -6,6 +7,11 @@ namespace Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries;
 
 public class CompanyDto : IMapFrom<Company>
 {
+    public CompanyDto()
+    {
+        Contacts = Array.Empty<CompanyContactInCompanyDto>();
+    }
+
     public Guid Id { get; set; }
 
     /// <summary>
@@ -41,6 +47,7 @@ public class CompanyDto : IMapFrom<Company>
     public string? WebsiteUri { get; set; }
     public string? AccountNumber { get; set; }
     public virtual ParentCompanyDto? ParentCompany { get; set; }
+    public IReadOnlyCollection<CompanyContactInCompanyDto> Contacts { get; init; }
     public int? AnnualRevenue { get; set; }
     public int? NumberOfEmployees { get; set; }
     public int? YearEstablished { get; set; }

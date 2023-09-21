@@ -26,6 +26,7 @@ public class GetCompanybyIdHandler : IRequestHandler<GetCompanyByIdQuery, Compan
         var result = await _dbContext.Companies
             .Include(company => company.Status)
             .Include(company => company.ParentCompany)
+            .Include(company => company.Contacts)
             .FirstOrDefaultAsync(company => company.Id == request.Id);
 
         return _mapper.Map<CompanyDto>(result);
