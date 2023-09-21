@@ -17,6 +17,7 @@ public class DatabaseContext : DbContext, IApplicationDbContext
     public DbSet<Company> Companies { get; set; }
     public DbSet<CompanyStatus> CompanyStatuses { get; set; }
     public DbSet<CompanyType> CompanyTypes { get; set; }
+    public DbSet<CompanyContact> CompanyContacts { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

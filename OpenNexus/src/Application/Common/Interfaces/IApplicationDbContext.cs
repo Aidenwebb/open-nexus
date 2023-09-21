@@ -8,6 +8,6 @@ public interface IApplicationDbContext
     DbSet<Company> Companies { get; }
     DbSet<CompanyStatus> CompanyStatuses { get; }
     DbSet<CompanyType> CompanyTypes { get; }
-
+    DbSet<CompanyContact> CompanyContacts { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
