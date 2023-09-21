@@ -1,5 +1,6 @@
 using System.Runtime.Serialization;
 using Arnkels.OpenNexus.Application.Common.Mappings;
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries;
 using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 using Arnkels.OpenNexus.Domain.Entities;
 using AutoMapper;
@@ -26,6 +27,8 @@ public class MappingTests
 
     [Test]
     [TestCase(typeof(CompanyStatus), typeof(CompanyStatusDto))]
+    [TestCase(typeof(Company), typeof(CompanyDto))]
+    [TestCase(typeof(Company), typeof(ParentCompanyDto))]
     public void Should_Support_MappingFromSourceToDestination(Type source, Type destination)
     {
         var instance = GetInstanceOf(source);
