@@ -1,11 +1,8 @@
 using Arnkels.OpenNexus.Application.Common.Interfaces;
-using Arnkels.OpenNexus.Application.Common.Mappings;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
-namespace Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
+namespace Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 
 public record GetCompanyStatusByIdQuery : IRequest<CompanyStatusDto>
 {

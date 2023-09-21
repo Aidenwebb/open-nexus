@@ -1,9 +1,8 @@
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using Arnkels.OpenNexus.Application.Companies.Models.ClientDto;
-using Arnkels.OpenNexus.Application.Companies.Models.Request;
-using Arnkels.OpenNexus.Application.Companies.Models.Response;
+using Arnkels.OpenNexus.Application.CompanyServices.Models.ClientDto;
+using Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
 using AutoMapper;
 
 namespace Arnkels.OpenNexus.WebUI.HttpRepositories;

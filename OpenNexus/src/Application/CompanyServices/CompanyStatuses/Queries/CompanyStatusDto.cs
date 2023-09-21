@@ -1,7 +1,7 @@
 using Arnkels.OpenNexus.Application.Common.Mappings;
 using Arnkels.OpenNexus.Domain.Entities;
 
-namespace Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
+namespace Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 
 public class CompanyStatusDto : IMapFrom<CompanyStatus>
 {

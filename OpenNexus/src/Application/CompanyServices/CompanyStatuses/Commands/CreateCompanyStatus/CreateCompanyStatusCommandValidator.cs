@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.CreateCompanyStatus;
+namespace Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.CreateCompanyStatus;
 
 public class CreateCompanyStatusCommandValidator : AbstractValidator<CreateCompanyStatusCommand>
 {

@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using Arnkels.OpenNexus.Api.Controllers.Company;
-using Arnkels.OpenNexus.Application.Companies.Models.Request;
-using Arnkels.OpenNexus.Application.Companies.Models.Response;
+using Arnkels.OpenNexus.Application.CompanyServices.Models.Response;
 using Arnkels.OpenNexus.Domain.Entities;
 using Arnkels.OpenNexus.Domain.Repositories;
 using Arnkels.OpenNexus.Domain.Services;

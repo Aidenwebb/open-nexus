@@ -1,4 +1,4 @@
-namespace Arnkels.OpenNexus.Application.Companies.Models.ClientDto;
+namespace Arnkels.OpenNexus.Application.CompanyServices.Models.ClientDto;
 
 public class CompanyStatusDto
 {

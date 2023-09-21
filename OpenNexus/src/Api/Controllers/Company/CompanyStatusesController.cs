@@ -1,10 +1,8 @@
 using Arnkels.OpenNexus.Application.Common.Models;
-using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.CreateCompanyStatus;
-using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.DeleteCompanyStatus;
-using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.UpdateCompanyStatus;
-using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
-using Arnkels.OpenNexus.Application.Companies.Models.Request;
-using Arnkels.OpenNexus.Application.Companies.Models.Response;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.CreateCompanyStatus;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.DeleteCompanyStatus;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.UpdateCompanyStatus;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 using Arnkels.OpenNexus.Domain.Repositories;
 using Arnkels.OpenNexus.Domain.Services;
 using Microsoft.AspNetCore.Mvc;

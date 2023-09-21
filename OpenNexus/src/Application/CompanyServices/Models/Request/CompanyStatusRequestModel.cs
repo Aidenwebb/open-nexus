@@ -1,7 +1,6 @@
 using Arnkels.OpenNexus.Domain.Entities;
-using AutoMapper;
 
-namespace Arnkels.OpenNexus.Application.Companies.Models.Request;
+namespace Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
 
 public class CompanyStatusRequestModel
 {

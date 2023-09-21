@@ -1,6 +1,6 @@
 using Arnkels.OpenNexus.Domain.Models.Api;
 
-namespace Arnkels.OpenNexus.Application.Companies.Models.Response;
+namespace Arnkels.OpenNexus.Application.CompanyServices.Models.Response;
 
 public class ListResponseModel<T> : ResponseModel where T : ResponseModel
 {

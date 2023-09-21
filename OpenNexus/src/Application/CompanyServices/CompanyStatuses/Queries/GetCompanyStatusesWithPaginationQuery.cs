@@ -5,7 +5,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 
-namespace Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
+namespace Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 
 public record GetCompanyStatusesWithPaginationQuery : IRequest<PaginatedList<CompanyStatusDto>>
 {

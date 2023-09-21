@@ -1,5 +1,5 @@
-using Arnkels.OpenNexus.Application.Companies.Models.ClientDto;
-using Arnkels.OpenNexus.Application.Companies.Models.Request;
+using Arnkels.OpenNexus.Application.CompanyServices.Models.ClientDto;
+using Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
 using Arnkels.OpenNexus.WebUI.HttpRepositories;
 using Microsoft.AspNetCore.Components;
 

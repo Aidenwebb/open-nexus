@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 using Arnkels.OpenNexus.Application.Common.Mappings;
-using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
+using Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Queries;
 using Arnkels.OpenNexus.Domain.Entities;
 using AutoMapper;
 

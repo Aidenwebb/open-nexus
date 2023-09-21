@@ -2,7 +2,7 @@ using Arnkels.OpenNexus.Application.Common.Interfaces;
 using Arnkels.OpenNexus.Domain.Entities;
 using MediatR;
 
-namespace Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.CreateCompanyStatus;
+namespace Arnkels.OpenNexus.Application.CompanyServices.CompanyStatuses.Commands.CreateCompanyStatus;
 
 // Request Model
 public record CreateCompanyStatusCommand : IRequest<Guid>
