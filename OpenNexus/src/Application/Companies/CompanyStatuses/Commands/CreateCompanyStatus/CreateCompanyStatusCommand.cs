@@ -29,6 +29,8 @@ public class CreateCompanyStatusCommandHandler : IRequestHandler<CreateCompanySt
             Description = request.Description
         };
 
+        entity.SetNewId();
+
         _dbContext.CompanyStatuses.Add(entity);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
