@@ -24,6 +24,8 @@ public class Company : BaseEntity
     /// </summary>
     public virtual List<CompanyType>? Types { get; } = new();
 
+    public IList<CompanyContact> Contacts { get; private set; } = new List<CompanyContact>();
+
     /// <summary>
     /// Unique identifier for the companies status. Maps to the CompanyStatus Entity
     /// </summary>
