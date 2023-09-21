@@ -81,7 +81,7 @@ public class DatabaseContext : DbContext, IApplicationDbContext
         modelBuilder.Entity<Company>().HasData(new Company
         {
             Id = Guid.Parse("43acb1cd-bae8-4503-aa4a-c21e97459c02"),
-            CompanyStatusId = Guid.Parse("68449c3e-1139-44f7-ab90-f5e7ef3a1963"),
+            CompanyStatusId = Guid.Parse("018ab325-8686-4373-b458-031ac61139ed"),
             Name = "Acme",
             Identifier = "acme",
             AccountNumber = "ACME001",
@@ -91,7 +91,7 @@ public class DatabaseContext : DbContext, IApplicationDbContext
         modelBuilder.Entity<Company>().HasData(new Company
         {
             Id = Guid.Parse("d5c2a80f-6bd4-49a8-80e4-d9230d1112ec"),
-            CompanyStatusId = Guid.Parse("e558b52c-4a4d-439f-9773-12288307a367"),
+            CompanyStatusId = Guid.Parse("018ab325-db68-441d-be32-84435167f043"),
             Name = "Contoso",
             Identifier = "contoso",
             AccountNumber = "CONT001",
@@ -102,7 +102,7 @@ public class DatabaseContext : DbContext, IApplicationDbContext
         modelBuilder.Entity<Company>().HasData(new Company
         {
             Id = Guid.Parse("6b5e768a-7fc8-40ea-a087-84553c85f021"),
-            CompanyStatusId = Guid.Parse("e1c19b6a-5e68-4d0e-b4d7-2d3c7645124a"),
+            CompanyStatusId = Guid.Parse("018ab326-1aa9-40da-8da8-81f0ac2d6aa5"),
             Name = "Greg Addams",
             Identifier = "greg_addams",
             AccountNumber = "GREG001",
