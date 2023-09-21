@@ -1,3 +1,4 @@
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.CreateCompany;
 using Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
 using Arnkels.OpenNexus.Application.CompanyServices.Models.Response;
 using Arnkels.OpenNexus.Domain.Repositories;
@@ -7,8 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Arnkels.OpenNexus.Api.Controllers.Company;
 
 [Route("/company/[controller]")]
-[ApiController]
-public partial class CompaniesController : ControllerBase
+public class CompaniesController : ApiControllerBase
 {
     private readonly ICompanyRepository _companyRepository;
     private readonly ICompanyService _companyService;
@@ -48,14 +48,13 @@ public partial class CompaniesController : ControllerBase
 
     [ProducesResponseType(201)]
     [HttpPost("")]
-    public async Task<IActionResult> CreateCompanyAsync([FromBody] CompanyRequestModel model)
+    public async Task<ActionResult> CreateCompanyAsync([FromBody] CreateCompanyCommand command)
     {
-        var company = model.ToCompany();
-        await _companyService.SaveAsync(company);
+        var responseId = await Mediator.Send(command);
 
-        var companySaved = await _companyRepository.GetByIdAsync(company.Id);
-        var response = new CompanyResponseModel(companySaved);
-        return CreatedAtAction(nameof(GetCompanyById), new { id = response.Id }, response);
+        var response = "";
+
+        return CreatedAtAction(nameof(GetCompanyById), new { id = responseId }, response);
     }
 
     [ProducesResponseType(204)]
