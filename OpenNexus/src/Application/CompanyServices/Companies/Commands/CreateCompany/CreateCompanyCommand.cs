@@ -21,6 +21,7 @@ public record CreateCompanyCommand : IRequest<Guid>
     public string? MobileNumber { get; set; }
     public string? WebsiteUri { get; set; }
     public string? AccountNumber { get; set; }
+    public Guid? ParentCompanyId { get; set; }
     public int? NumberOfEmployees { get; set; }
     public int? AnnualRevenue { get; set; }
     public int? YearEstablished { get; set; }
@@ -55,6 +56,7 @@ public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand,
             MobileNumber = request.MobileNumber,
             WebsiteUri = request.WebsiteUri,
             AccountNumber = request.AccountNumber,
+            ParentCompanyId = request.ParentCompanyId,
             NumberOfEmployees = request.NumberOfEmployees,
             AnnualRevenue = request.AnnualRevenue,
             YearEstablished = request.YearEstablished
