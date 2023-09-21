@@ -1,3 +1,8 @@
+using Arnkels.OpenNexus.Application.Common.Models;
+using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.CreateCompanyStatus;
+using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.DeleteCompanyStatus;
+using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Commands.UpdateCompanyStatus;
+using Arnkels.OpenNexus.Application.Companies.CompanyStatuses.Queries;
 using Arnkels.OpenNexus.Application.Companies.Models.Request;
 using Arnkels.OpenNexus.Application.Companies.Models.Response;
 using Arnkels.OpenNexus.Domain.Repositories;
@@ -7,99 +12,60 @@ using Microsoft.AspNetCore.Mvc;
 namespace Arnkels.OpenNexus.Api.Controllers.Company;
 
 [Route("/company/statuses")]
-[ApiController]
-public class CompanyStatusesController : ControllerBase
+public class CompanyStatusesController : ApiControllerBase
 {
-    private readonly ICompanyStatusRepository _companyStatusRepository;
-    private readonly ICompanyStatusService _companyStatusService;
-
-    public CompanyStatusesController(ICompanyStatusRepository companyStatusRepository,
-        ICompanyStatusService companyStatusService)
-    {
-        _companyStatusRepository = companyStatusRepository;
-        _companyStatusService = companyStatusService;
-    }
-
     // Get CompanyStatuses
     [HttpGet("")]
-    public async Task<IActionResult> GetCompanyStatuses()
+    public async Task<ActionResult<PaginatedList<CompanyStatusDto>>> GetCompanyStatusesWithPagination(
+        [FromQuery] GetCompanyStatusesWithPaginationQuery query)
     {
-        ICollection<Domain.Entities.CompanyStatus> companyStatuses = await _companyStatusRepository.GetManyAsync();
-
-        if (companyStatuses == null)
-        {
-            return NoContent();
-        }
-
-        var responses = companyStatuses.Select(companyStatus => new CompanyStatusResponseModel(companyStatus));
-
-        return Ok(new ListResponseModel<CompanyStatusResponseModel>(responses));
+        return await Mediator.Send(query);
     }
 
     // Get CompanyStatusById
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetCompanyStatusById(Guid id)
     {
-        var companyStatus = await _companyStatusRepository.GetByIdAsync(id);
-
-        if (companyStatus == null)
-        {
-            return NotFound();
-        }
-
-        var response = new CompanyStatusResponseModel(companyStatus);
-
-        return Ok(response);
+        return Ok("test");
     }
 
     // Create CompanyStatus
 
     [HttpPost("")]
-    public async Task<IActionResult> CreateCompanyStatus([FromBody] CompanyStatusRequestModel model)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateCompanyStatusCommand command)
     {
-        var companyStatus = model.ToCompanyStatus();
+        var responseId = await Mediator.Send(command);
 
-        await _companyStatusService.SaveAsync(companyStatus);
+        var response = "";
 
-        var companyStatusSaved = await _companyStatusRepository.GetByIdAsync(companyStatus.Id);
-
-        var response = new CompanyStatusResponseModel(companyStatusSaved);
-
-        return CreatedAtAction(nameof(GetCompanyStatusById), new { id = response.Id }, response);
+        return CreatedAtAction(nameof(GetCompanyStatusById), new { id = responseId }, response);
     }
 
     // Delete CompanyStatus
-    [ProducesResponseType(204)]
     [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteCompanyStatusAsync(Guid id)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesDefaultResponseType]
+    public async Task<IActionResult> DeleteAsync(Guid id)
     {
-        var companyStatus = await _companyStatusRepository.GetByIdAsync(id);
-        if (companyStatus == null)
-        {
-            return NotFound();
-        }
-
-        await _companyStatusService.DeleteAsync(companyStatus);
+        await Mediator.Send(new DeleteCompanyStatusCommand(id));
 
         return NoContent();
     }
 
     // Put CompanyStatus
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> ReplaceCompanyStatusAsync(Guid id, [FromBody] CompanyStatusRequestModel model)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesDefaultResponseType]
+    public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] UpdateCompanyStatusCommand command)
     {
-        var existingCompanyStatus = await _companyStatusRepository.GetByIdAsync(id);
-        if (existingCompanyStatus == null)
+        if (id != command.Id)
         {
-            return NotFound();
+            return BadRequest();
         }
 
-        var companyStatus = model.ToCompanyStatus();
-        companyStatus.Id = existingCompanyStatus.Id;
-        await _companyStatusService.SaveAsync(companyStatus);
+        await Mediator.Send(command);
 
-        var response = new CompanyStatusResponseModel(await _companyStatusRepository.GetByIdAsync(id));
-
-        return Ok(response);
+        return NoContent();
     }
 }
