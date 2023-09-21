@@ -1,4 +1,6 @@
 using Arnkels.OpenNexus.Application.CompanyServices.Companies.Commands.CreateCompany;
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries;
+using Arnkels.OpenNexus.Application.CompanyServices.Companies.Queries.GetCompanyById;
 using Arnkels.OpenNexus.Application.CompanyServices.Models.Request;
 using Arnkels.OpenNexus.Application.CompanyServices.Models.Response;
 using Arnkels.OpenNexus.Domain.Repositories;
@@ -32,18 +34,13 @@ public class CompaniesController : ApiControllerBase
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetCompanyById(Guid id)
+    public async Task<ActionResult<CompanyDto>> GetCompanyById(Guid id)
     {
-        var company = await _companyRepository.GetByIdAsync(id);
-
-        if (company == null)
+        var query = new GetCompanyByIdQuery
         {
-            return NotFound();
-        }
-
-        CompanyResponseModel response = new CompanyResponseModel(company);
-
-        return Ok(response);
+            Id = id
+        };
+        return await Mediator.Send(query);
     }
 
     [ProducesResponseType(201)]

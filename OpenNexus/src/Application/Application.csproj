@@ -27,4 +27,11 @@
     </ItemGroup>
 
 
+    <ItemGroup>
+        <Folder Include="CompanyServices\Companies\Commands\DeleteCompany\"/>
+        <Folder Include="CompanyServices\Companies\Commands\UpdateCompany\"/>
+        <Folder Include="CompanyServices\Companies\Queries\GetCompaniesWithPagination\"/>
+    </ItemGroup>
+
+
 </Project>
