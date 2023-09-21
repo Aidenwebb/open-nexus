@@ -1,0 +1,23 @@
+@inherits CompanyStatusesBase
+@page "/company/statuses"
+
+<PageTitle>Company Statuses</PageTitle>
+
+<h1>Company Statuses</h1>
+<button class="btn btn-success sm">
+    <i class="fa fa-plus" @onclick="() => NewCompanyStatus_Click()"></i>
+</button>
+
+@if (CompanyStatuses == null)
+{
+}
+else
+{
+    <h2>@CompanyStatuses.Data.Count().ToString()</h2>
+
+    <CompanyStatusTable CompanyStatuses="@CompanyStatuses"></CompanyStatusTable>
+}
+
+@code {
+
+}

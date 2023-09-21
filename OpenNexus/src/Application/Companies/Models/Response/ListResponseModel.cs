@@ -10,6 +10,6 @@ public class ListResponseModel<T> : ResponseModel where T : ResponseModel
         ContinuationToken = continuationToken;
     }
 
-    public IEnumerable<T> Data { get; set; }
+    public IEnumerable<T>? Data { get; set; }
     public string ContinuationToken { get; set; }
 }

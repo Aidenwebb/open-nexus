@@ -1,5 +1,6 @@
 using Arnkels.OpenNexus.Application;
 using Arnkels.OpenNexus.Infrastructure;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(policy => policy.WithOrigins("https://localhost:7114", "http://localhost:5116")
+        .AllowAnyMethod()
+        .WithHeaders(HeaderNames.ContentType));
 }
+
 
 app.UseHttpsRedirection();
 

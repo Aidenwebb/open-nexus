@@ -1,0 +1,30 @@
+@inherits CompanyStatusTableBase
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var companyStatus in CompanyStatuses.Data)
+    {
+        <tr>
+            <td>@companyStatus.Id.ToString()</td>
+            <td>@companyStatus.Name</td>
+            <td>@companyStatus.Description</td>
+            <td>
+                <button class="btn btn-warning sm" @onclick="() => EditCompanyStatus_Click(companyStatus.Id)">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-danger sm" @onclick="() => DeleteCompanyStatus_Click(companyStatus.Id)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+@code {
+
+}

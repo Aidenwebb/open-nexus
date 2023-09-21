@@ -1,0 +1,22 @@
+@page "/company/statuses/new"
+@inherits CompanyStatusNewBase
+<h3>CompanyStatusNew</h3>
+
+@if (ErrorMessage != null)
+{
+    <DisplayError ErrorMessage="@ErrorMessage"></DisplayError>
+}
+
+<button class="btn btn-success sm"@onclick="() => CreateCompanyStatus_Click()">
+    <i class="fa fa-save"></i>
+</button>
+<EditForm Model=@CompanyStatus>
+    <label for="companyStatusName">Name</label>
+    <input type="text" id="companyStatusName" @bind-value="@CompanyStatus.Name">
+    <label for="companyStatusDescription">Description</label>
+    <input type="text" id="companyStatusDescription" @bind-value="@CompanyStatus.Description"/>
+</EditForm>
+
+@code {
+
+}
