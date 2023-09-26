@@ -1,4 +1,5 @@
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Identity;
 
 namespace Arnkels.OpenNexus.Application.Common.Exceptions;
 
@@ -13,6 +14,13 @@ public class ValidationException : Exception
     {
         Errors = failures
             .GroupBy(e => e.PropertyName, e => e.ErrorMessage)
+            .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
+    }
+
+    public ValidationException(IEnumerable<IdentityError> errors) : this()
+    {
+        Errors = errors
+            .GroupBy(e => e.Code, e => e.Description)
             .ToDictionary(failureGroup => failureGroup.Key, failureGroup => failureGroup.ToArray());
     }
 
