@@ -1,11 +1,13 @@
 using Arnkels.OpenNexus.Application.Common.Interfaces;
 using Arnkels.OpenNexus.Domain.Entities;
+using Arnkels.OpenNexus.Domain.Entities.Systems;
 using MediatR;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Arnkels.OpenNexus.Infrastructure.Persistence;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext : IdentityDbContext<User>, IApplicationDbContext
 {
     private readonly IMediator _mediator;
 
