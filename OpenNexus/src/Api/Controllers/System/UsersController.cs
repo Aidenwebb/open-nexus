@@ -1,6 +1,6 @@
 using Arnkels.OpenNexus.Application.Common.Models;
-using Arnkels.OpenNexus.Application.SystemServices.SystemUsers.Commands.CreateUser;
-using Arnkels.OpenNexus.Application.SystemServices.SystemUsers.Queries;
+using Arnkels.OpenNexus.Application.SystemServices.Users.Commands.CreateUser;
+using Arnkels.OpenNexus.Application.SystemServices.Users.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Arnkels.OpenNexus.Api.Controllers.System;

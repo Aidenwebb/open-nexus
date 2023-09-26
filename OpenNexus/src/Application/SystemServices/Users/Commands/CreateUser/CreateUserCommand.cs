@@ -1,9 +1,7 @@
-using System.ComponentModel.DataAnnotations;
 using Arnkels.OpenNexus.Application.Common.Interfaces;
-using Arnkels.OpenNexus.Domain.Entities.Systems;
 using MediatR;
 
-namespace Arnkels.OpenNexus.Application.SystemServices.SystemUsers.Commands.CreateUser;
+namespace Arnkels.OpenNexus.Application.SystemServices.Users.Commands.CreateUser;
 
 public record CreateUserCommand : IRequest<string>
 {

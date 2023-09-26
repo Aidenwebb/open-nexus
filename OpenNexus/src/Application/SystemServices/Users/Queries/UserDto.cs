@@ -1,7 +1,7 @@
 using Arnkels.OpenNexus.Application.Common.Mappings;
 using Arnkels.OpenNexus.Domain.Entities.Systems;
 
-namespace Arnkels.OpenNexus.Application.SystemServices.SystemUsers.Queries;
+namespace Arnkels.OpenNexus.Application.SystemServices.Users.Queries;
 
 public class UserDto : IMapFrom<User>
 {
