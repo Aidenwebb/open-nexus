@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using Arnkels.OpenNexus.Application.Common.Interfaces;
 using Arnkels.OpenNexus.Application.Common.Exceptions;
-using Arnkels.OpenNexus.Application.SystemServices.Auth.Commands.Login;
 using Arnkels.OpenNexus.Domain.Entities.Systems;
 using Microsoft.AspNetCore.Identity;
 
